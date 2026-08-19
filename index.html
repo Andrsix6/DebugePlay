@@ -1,0 +1,295 @@
+<div id="debug-play-blog">
+  <style>
+    /* Estilos Globais do Tema Blog */
+    #debug-play-blog {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0b0f19;
+      color: #e2e8f0;
+      margin: 0;
+      padding: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+    }
+
+    #debug-play-blog * {
+      box-sizing: border-box;
+    }
+
+    /* Cabeçalho do Blog */
+    .dp-header {
+      background: #0f172a;
+      border-bottom: 1px solid #1e293b;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .dp-logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .dp-nav {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dp-nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .dp-nav a:hover, .dp-nav a.active {
+      color: #38bdf8;
+    }
+
+    /* Layout Principal (Grid de Conteúdo + Sidebar) */
+    .dp-container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .dp-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Artigos */
+    .dp-main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .dp-post-card {
+      background-color: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .dp-post-card:hover {
+      transform: translateY(-3px);
+      border-color: #38bdf8;
+    }
+
+    .dp-post-thumb {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .dp-post-body {
+      padding: 20px;
+    }
+
+    .dp-category-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .tag-dev { background-color: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+    .tag-gamer { background-color: rgba(236, 72, 153, 0.15); color: #ec4899; }
+    .tag-tech { background-color: rgba(74, 222, 128, 0.15); color: #4ade80; }
+
+    .dp-post-title {
+      font-size: 1.25rem;
+      margin: 0 0 10px 0;
+      color: #f8fafc;
+    }
+
+    .dp-post-excerpt {
+      color: #94a3b8;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      margin: 0 0 15px 0;
+    }
+
+    .dp-read-more {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .dp-read-more:hover {
+      text-decoration: underline;
+    }
+
+    /* Sidebar */
+    .dp-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .dp-widget {
+      background-color: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .dp-widget h3 {
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #f8fafc;
+      border-bottom: 2px solid #1f2937;
+      padding-bottom: 8px;
+    }
+
+    .dp-widget ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .dp-widget li a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .dp-widget li a:hover {
+      color: #38bdf8;
+    }
+
+    /* Rodapé */
+    .dp-footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #0f172a;
+      border-top: 1px solid #1e293b;
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+  </style>
+
+  <!-- Cabeçalho -->
+  <header class="dp-header">
+    <a href="#" class="dp-logo">Debug & Play ⚡</a>
+    <ul class="dp-nav">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Games</a></li>
+      <li><a href="#">Tech</a></li>
+      <li><a href="#">Dev</a></li>
+    </ul>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <div class="dp-container">
+    <!-- Lista de Artigos / Feed -->
+    <main class="dp-main-content">
+      
+      <!-- Post 1: Dev -->
+      <article class="dp-post-card">
+        <div class="dp-post-thumb">💻</div>
+        <div class="dp-post-body">
+          <span class="dp-category-tag tag-dev">Desenvolvimento</span>
+          <h2 class="dp-post-title">Como otimizar loops complexos em JavaScript sem perder performance</h2>
+          <p class="dp-post-excerpt">Descubra técnicas avançadas de refatoração para acelerar o processamento de grandes massas de dados no front-end sem travar a interface do usuário.</p>
+          <a class="dp-read-more" onclick="alert('Redirecionando para o artigo completo...'); return false;">Ler artigo completo &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Post 2: Gamer -->
+      <article class="dp-post-card">
+        <div class="dp-post-thumb">🎮</div>
+        <div class="dp-post-body">
+          <span class="dp-category-tag tag-gamer">Gamer</span>
+          <h2 class="dp-post-title">A evolução dos motores gráficos: O que esperar da próxima geração de Unreal Engine</h2>
+          <p class="dp-post-excerpt">Uma análise profunda sobre iluminação global em tempo real, nanite e como o hardware atual está lidando com mundos hiper-realistas.</p>
+          <a class="dp-read-more" onclick="alert('Redirecionando para o artigo completo...'); return false;">Ler artigo completo &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Post 3: Tech -->
+      <article class="dp-post-card">
+        <div class="dp-post-thumb">⚡</div>
+        <div class="dp-post-body">
+          <span class="dp-category-tag tag-tech">Tecnologia</span>
+          <h2 class="dp-post-title">Hardware atual: Placas de vídeo focadas em IA mudam o cenário dos PCs</h2>
+          <p class="dp-post-excerpt">Como as novas arquiteturas de processamento neural estão integrando inteligência artificial direto no silício para otimizar frames e produtividade.</p>
+          <a class="dp-read-more" onclick="alert('Redirecionando para o artigo completo...'); return false;">Ler artigo completo &rarr;</a>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Barra Lateral (Sidebar) -->
+    <aside class="dp-sidebar">
+      <div class="dp-widget">
+        <h3>🔥 Mais Lidos</h3>
+        <ul>
+          <li><a href="#">1. O guia definitivo para debugar aplicações web</a></li>
+          <li><a href="#">2. Os melhores jogos indies do ano</a></li>
+          <li><a href="#">3. Por que migrei meu stack para TypeScript</a></li>
+        </ul>
+      </div>
+
+      <div class="dp-widget">
+        <h3>🏷️ Tópicos</h3>
+        <ul>
+          <li><a href="#">Engenharia de Software</a></li>
+          <li><a href="#">Análise de Hardware</a></li>
+          <li><a href="#">Game Design & Código</a></li>
+          <li><a href="#">Dicas de Produtividade Tech</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="dp-footer">
+    <p>&copy; 2026 Debug & Play. Todos os direitos reservados. Feito para desenvolvedores e entusiastas de tecnologia.</p>
+  </footer>
+
+  <script>
+    // Script interativo básico para navegação simulada do blog
+    (function() {
+      const navLinks = document.querySelectorAll('.dp-nav a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    })();
+  </script>
+</div>
